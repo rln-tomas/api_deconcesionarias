@@ -6,9 +6,11 @@ class BaseBussiness {
 		this._entityToMap = EntityToMap; 
 	}
 
-	async getAll(){
+	async getAll(toWhere = null){
 		try{
-			const entities = await this._entityRepository.getAll(); 
+			console.log('Bussiness: ', toWhere);
+			const entities = await this._entityRepository.getAll(toWhere); 
+			console.log(entities);
 			return entities.map(entity => mapper(this._entityToMap, entity.toJSON())); 
 		}catch(error){
 			console.log(error);

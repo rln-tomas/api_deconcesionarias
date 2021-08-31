@@ -4,8 +4,12 @@ class BaseRepository {
 		this._entity = entity; 
 	}
 
-	async getAll(){
+	async getAll(toWhere = null){
 		try {
+			if (toWhere){
+				return await this._db[this._entity].findAll({where: toWhere});
+
+			}
 			return await this._db[this._entity].findAll();
 			
 		}catch(error){
@@ -20,6 +24,8 @@ class BaseRepository {
 			return ; 
 		}
 	}
+
+	
 
 	async create(data){
 		try{

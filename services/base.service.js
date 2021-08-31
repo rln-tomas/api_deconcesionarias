@@ -3,9 +3,10 @@ class BaseService {
 		this._entityBussiness = EntityBussiness; 
 	}
 
-	async getAll(){
+	async getAll(toWhere = null){
 		try{
-			return await this._entityBussiness.getAll();
+			console.log('Service: ', toWhere);
+			return await this._entityBussiness.getAll(toWhere);
 		}catch(error){
 			return; 
 		}

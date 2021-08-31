@@ -26,6 +26,25 @@ class PropertyController {
 		}
 	}
 
+	async getPropertiesByCategory(req, res){
+		try{
+			const { categoryId } = req.params; 
+			const toWhere = {
+				categoryId: parseInt(categoryId)
+			};
+			const properties = await this._propertyService.getAll(toWhere);
+			return res.status(200).send({
+				ok: true,
+				data: properties
+			});
+		}catch(error){
+			return res.status(500).send({
+				ok: false, 
+				error: error
+			});
+		}
+	}
+
 	async getProperty(req, res){
 		try{
 			const { id } = req.params; 
