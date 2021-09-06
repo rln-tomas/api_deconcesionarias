@@ -5,15 +5,17 @@ class BaseService {
 
 	async getAll(toWhere = null){
 		try{
-			console.log('Service: ', toWhere);
 			return await this._entityBussiness.getAll(toWhere);
 		}catch(error){
 			return; 
 		}
 	}
 
-	async get(id){
+	async get(id, toWhere=null){
 		try{
+			if (toWhere){
+				return await this._entityBussiness.get(id, toWhere);
+			}
 			return await this._entityBussiness.get(id);
 		}catch(error){
 			return; 

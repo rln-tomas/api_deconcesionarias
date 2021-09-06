@@ -8,9 +8,7 @@ class BaseBussiness {
 
 	async getAll(toWhere = null){
 		try{
-			console.log('Bussiness: ', toWhere);
 			const entities = await this._entityRepository.getAll(toWhere); 
-			console.log(entities);
 			return entities.map(entity => mapper(this._entityToMap, entity.toJSON())); 
 		}catch(error){
 			console.log(error);
@@ -18,9 +16,14 @@ class BaseBussiness {
 		}
 	}
 
-	async get(id){
+	async get(id, toWhere=null){
 		try{
-			const entity = await this._entityRepository.get(id); 
+			let entity; 
+			if (toWhere){
+				entity = await this._entityRepository.get(id, toWhere); 
+			}else{
+				entity = await this._entityRepository.get(id); 
+			} 
 			return mapper(this._entityToMap, entity.toJSON()); 
 		}catch(error){
 			return;
