@@ -1,4 +1,4 @@
-FROM 410323401/deco-api:latest
+FROM 410323401/decon-api:latest
 
 WORKDIR /app
 
