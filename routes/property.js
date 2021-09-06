@@ -6,6 +6,7 @@ module.exports = function({ PropertyController }){
 	router.get('/:id', PropertyController.getProperty.bind(PropertyController));
 	router.get('/all/:categoryId', PropertyController.getPropertiesByCategory.bind(PropertyController)); 
 	router.post('/', PropertyController.createProperty.bind(PropertyController));
+	router.get('/one/:categoryId', PropertyController.getPropertyByCategory.bind(PropertyController)); 
 	router.delete('/:id', PropertyController.deleteProperty.bind(PropertyController)); 
 	router.patch('/:id', PropertyController.updateProperty.bind(PropertyController));
 	
