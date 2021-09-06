@@ -26,6 +26,7 @@ class PropertyController {
 		}
 	}
 
+
 	async getPropertiesByCategory(req, res){
 		try{
 			const { categoryId } = req.params; 
@@ -61,6 +62,22 @@ class PropertyController {
 				ok: true, 
 				data: property
 			}); 
+		}catch(error){
+			return res.status(500).send({
+				ok: false, 
+				error: error
+			});
+		}
+	}
+
+	async getPropertyByCategory(req, res){
+		try{
+			const { categoryId } = req.params; 
+			const property = await this._propertyService.get(null,{categoryId});
+			return res.status(200).send({
+				ok: true, 
+				data: property
+			});
 		}catch(error){
 			return res.status(500).send({
 				ok: false, 

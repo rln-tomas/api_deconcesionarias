@@ -20,6 +20,25 @@ class AssessmentController {
 		}
 	}
 
+	async getAssessmentByProperty(req, res){
+		try{
+			const { propertyId } = req.params; 
+			const toWhere = {
+				propertyId: propertyId
+			};
+			const assessment = await this._assessmentService.getAll(toWhere);
+			return res.status(200).send({
+				ok: true, 
+				data: assessment[0]
+			});
+		}catch(error){
+			return res.status(500).send({
+				ok: false, 
+				error: error
+			});
+		}
+	}
+
 	async getAssessments(req, res){
 		try{
 			const assessments = await this._assessmentService.getAll(); 
@@ -94,6 +113,10 @@ class AssessmentController {
 			const { id } = req.params; 
 			const data = req.body; 
 			await this._assessmentService.update(id, data);
+			return res.status(200).send({
+				ok: true, 
+				msg: 'Assessment updated successfully'
+			});
 		}catch(error){
 			return res.status(500).send({
 				ok: false, 
