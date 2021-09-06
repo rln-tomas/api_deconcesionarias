@@ -11,17 +11,19 @@ module.exports = (sequelize, DataTypes) => {
      */
 		static associate(models) {
 			// define association here
-
+			Property.belongsToMany(models.Vehicle, {
+				through: 'VehicleProperty',
+				foreignKey: 'propertyId'
+			});
 		}
 	}
 	Property.init({
-		name: DataTypes.STRING,
-		categoryId: DataTypes.INTEGER,
-		vehicleId: DataTypes.INTEGER,
-		assessmentId: DataTypes.INTEGER
+		name: DataTypes.STRING
 	}, {
 		sequelize,
 		modelName: 'Property',
+		timestamps: false
 	});
+
 	return Property;
 };
