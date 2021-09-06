@@ -11,9 +11,6 @@ module.exports = {
 			name: {
 				type: Sequelize.STRING
 			},
-			assessmentId: {
-				type: Sequelize.INTEGER
-			},
 			createdAt: {
 				allowNull: false,
 				type: Sequelize.DATE

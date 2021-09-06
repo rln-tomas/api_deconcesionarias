@@ -14,12 +14,6 @@ module.exports = {
 			categoryId: {
 				type: Sequelize.INTEGER
 			},
-			vehicleId: {
-				type: Sequelize.INTEGER
-			},
-			assessmentId: {
-				type: Sequelize.INTEGER
-			},
 			createdAt: {
 				allowNull: false,
 				type: Sequelize.DATE

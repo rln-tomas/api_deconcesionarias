@@ -1,34 +1,30 @@
 'use strict';
 module.exports = {
 	up: async (queryInterface, Sequelize) => {
-		await queryInterface.createTable('Assessments', {
+		await queryInterface.createTable('VehicleProperties', {
 			id: {
 				allowNull: false,
 				autoIncrement: true,
 				primaryKey: true,
 				type: Sequelize.INTEGER
 			},
-			value: {
-				type: Sequelize.INTEGER,
-				default: 0
+			vehicleId: {
+				type: Sequelize.INTEGER
 			},
 			propertyId: {
 				type: Sequelize.INTEGER
 			},
-			vehicleId: {
-				type: Sequelize.INTEGER
-			},
 			createdAt: {
-				allowNull: true,
+				allowNull: false,
 				type: Sequelize.DATE
 			},
 			updatedAt: {
-				allowNull: true,
+				allowNull: false,
 				type: Sequelize.DATE
 			}
 		});
 	},
 	down: async (queryInterface, Sequelize) => {
-		await queryInterface.dropTable('Assessments');
+		await queryInterface.dropTable('VehicleProperties');
 	}
 };
