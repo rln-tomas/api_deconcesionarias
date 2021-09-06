@@ -1,0 +1,11 @@
+FROM 410323401/deco-api:latest
+
+WORKDIR /app
+
+COPY . .
+
+RUN npm install
+
+EXPOSE 3000
+
+CMD ["npm", "start"]
