@@ -13,12 +13,17 @@ class BaseRepository {
 			return await this._db[this._entity].findAll();
 			
 		}catch(error){
+			console.log(error);
 			return; 
 		}
 	}
 
-	async get(id){
+	async get(id, toWhere=null){
 		try {
+			if (toWhere){
+				return await this._db[this._entity].findOne({ where: toWhere });
+			}
+			
 			return await this._db[this._entity].findByPk(id);
 		}catch(error){
 			return ; 
@@ -51,6 +56,7 @@ class BaseRepository {
 			return; 
 		}
 	}
+
 }
 
 module.exports = BaseRepository;
